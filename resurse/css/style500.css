@@ -1,0 +1,37 @@
+.container {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-areas: 
+    "zona1" 
+    "zonab"
+    "zona2"
+    "zona3"
+    "zona4" 
+    "zona8"
+    "zona7" 
+    "zona5"
+    "zona6"	 
+    "zonaF"
+}
+
+
+
+.flexboxitem a{
+    text-decoration:none;
+    width:75px;
+}
+
+
+iframe {
+    max-width: 700px;
+    width: 100%;
+}
+
+.ptzona1
+
+{
+    margin-left: 37vw;
+
+
+
+}

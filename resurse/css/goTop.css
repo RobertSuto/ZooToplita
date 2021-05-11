@@ -1,0 +1,27 @@
+.gotop{
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  background: #D0085B;
+  bottom: 0px;
+  right: 0px;
+  border-radius: 130px 130px 0px 0px;
+  text-decoration: none;
+  text-align: center;
+  line-height: 56px;
+  color: #FAF561;
+  font-size: 30px;
+  opacity: 75%;
+
+}
+
+.gotop:hover
+{
+
+  font-size: 50px;
+  font-size-adjust: 10px;
+  transition:  300ms;
+  opacity: 100%;
+
+  box-shadow: inset 0 0 25px #771212;
+}

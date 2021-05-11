@@ -1,0 +1,51 @@
+
+.tablet
+{
+  text-align: center;
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 2em;
+  overflow: hidden;
+  counter-reset: linie;
+  
+}
+.tablet td 
+{
+  padding: 1em;
+  border-bottom: 2px solid var(--creamcan); 
+}
+.tablet th
+{
+  padding: 1em;
+  background: var(--creamcan);
+  border-bottom: 2px solid var(--creamcan); 
+
+}
+.tablet tr td:nth-child(odd)
+{ 
+  background: var(--goldfizz);
+}
+
+.tablet tr td:nth-child(even)
+{ 
+  background: var(--galbenfrum);
+}
+
+.tablet tr:hover td 
+{
+  background-color: var(--creamcan);
+}
+
+.tablet .liniaa{
+
+  counter-increment: linie;
+
+}
+
+.tablet .liniaa td:first-child::before{
+
+  content: counter(linie);
+
+}
+
+

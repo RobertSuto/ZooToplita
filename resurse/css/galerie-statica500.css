@@ -1,0 +1,21 @@
+#grid-galerie {
+    display:grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-row-gap:0.5em;
+    grid-column-gap:0.5em;
+    
+   }
+figure:nth-child(5){
+    display:none;
+  
+  }
+  
+  figure:nth-child(8){
+    display:none;
+  
+  }
+@media screen and (max-width:500px){
+    #grid-galerie {
+        display:block;
+    }
+}

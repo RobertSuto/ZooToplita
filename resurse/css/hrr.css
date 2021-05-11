@@ -1,0 +1,35 @@
+.hasier {
+  border: none;
+  border-top: 3px solid ;
+  border-color: var(--rosu);
+  overflow: visible;
+  text-align: center;
+  height: 5px;
+  width: 77%;
+
+  display: block;
+}
+
+.hasier:after 
+{
+  color: var(--rosu);
+  font-family: 'Roboto', sans-serif;
+  content: '*';
+  font-size: 50px;
+  padding: 0 4px;
+  position: relative;
+  top: -25px;
+  right: 53%;
+}
+.hasier:before 
+{
+  color: var(--rosu);
+  font-family: 'Roboto', sans-serif;
+  color: var(--rosu);
+  content: '*';
+  font-size: 50px;
+  padding: 0 4px;
+  position: relative;
+  top: -25px;
+  left: 53%;
+}

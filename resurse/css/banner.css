@@ -1,0 +1,21 @@
+.banner
+{
+     border: 0.4rem solid var(--rosu);
+  visibility: hidden;
+     position: fixed;
+   width:100%;
+  bottom: 0px;
+   text-align: center;
+   background-color:var(--rosu);
+  animation: banner_style 6s linear;
+ }
+
+
+
+@keyframes banner_style 
+{
+   0%{color:#b700ff;bottom:-100%;visibility: visible;}
+  25%{color:rgb(25, 0, 255);background-color: var(--rosu); border-color: var(--rosu);bottom:20px}
+  50%{color:rgb(51, 255, 0);background-color: var(--rosu); border-color: var(--rosu);bottom:0px}
+  100%{color:#ff00d4;background-color: var(--rosu); border-color: var(--rosu);bottom:0px;visibility: hidden}
+}

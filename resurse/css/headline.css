@@ -1,0 +1,39 @@
+.headline{
+    background: #ffffff;
+    background: -moz-#ffffff;
+    background: -webkit-#ffffff;
+   
+    border-radius: 20px 20px 20px 20px;
+  
+    margin-left: 5vw;
+    margin-top: 7vh;
+    margin-bottom: 4vh;
+
+    padding: 20px 40px 40px;
+    max-width: 640px;
+    max-height: 640px;
+    font-family: 'Roboto', sans-serif;
+    
+}
+
+.container__image{
+    width: 250px;
+    margin: 10px 30px 30px 0;
+    float: left;
+  }
+
+.container_text{
+    display: inline-block;
+    font-size:5px;
+    
+}
+
+
+.ptzona1
+
+{
+    margin-left: 25vw;
+    color: white;
+
+    
+}

@@ -1,0 +1,166 @@
+@import "nav.css";
+@import "gotop.css";
+@import "banner.css";
+@import "goTop.css";
+@import "taburi.css";
+@import "hrr.css";
+@import "tabel.css";
+@import "headline.css";
+@import "bscontainer.css";
+@import "footer.css";
+@import "galerie-statica.css";
+@import "printare.css";
+@import "video.css";
+body {
+
+    margin: 0%;
+    padding: 0%;
+    --verde: #4CAF50;
+    --rosu: #D0085B;
+    --galbenfrum: #FAF561;
+    --verdelime: #2FF979;
+    --unt: #E3D264;
+    --galbenverzui: #CDF05D;
+    --goldfizz: #EFF92F;
+    --creamcan: #F0BF5D;
+    --goldennord: #FAD661;
+    --negru: #000000;
+    background: var(--rosu);
+    
+}
+
+header {
+    background-image: url("../Imagini/backgroundh.jpg");
+    background-size: 100%;
+    background-size: cover;
+    overflow:visible;
+}
+
+
+.container
+{
+    display: grid;
+    
+   
+    grid-template-areas: 
+    "zona1 zona1 zona1 zona1"
+    "zonab zonab zonab zonab"
+    "zona3 zona2 zona2 zona4"
+    "zona8 zona8 zona8 zona8"
+    "zona7 zona7 zona5 zona6"
+    "zonaF zonaF zonaF zonaF"
+    ;
+
+}
+.zonab{
+  grid-area: zonab;
+  background-image: url("../Imagini/animalprint.jpg");
+  background-size: 110%;
+  background-size: cover;
+
+  color:white;
+  font-family: carelia;
+  
+
+}
+
+
+.zonab h1{
+  margin-left:38.5vw;
+  font-size:32.5px;
+  
+
+
+}
+.zona1 
+{ 
+
+  grid-area: zona1;
+
+  background-image: url("../Imagini/monke.jpg");
+  background-size: 100%;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  font-family: carelia;
+  font-size:18px;
+
+
+  padding: 0;
+}
+.zona3 
+{ 
+  grid-area: zona3;
+  background-color:var(--verdelime);
+  
+}
+.zona2 
+{ 
+  grid-area: zona2; 
+  background-color: var(--galbenverzui);
+  overflow: auto;
+  height:50vh;
+
+ 
+}
+.zona4 
+{ 
+  grid-area: zona4; 
+  background-color: var(--goldfizz);
+}
+.zona8 
+{ 
+  grid-area: zona8; 
+  background-color: var(--galbenfrum);
+  padding-left: 10px;
+}
+.zona7 
+{ 
+  grid-area: zona7;
+  background-color: var(--unt);
+}
+.zona5 
+{ 
+  grid-area: zona5; 
+  background-color: var(--goldennord);
+}
+.zona6 
+{ 
+  grid-area: zona6; 
+  background-color: var(--creamcan);
+}
+
+.zonaF 
+{ 
+  grid-area:zonaF;
+}
+
+.image-responsive{
+
+    width: 20%;
+    height: auto ;
+    margin:10px;
+}
+
+.icon{
+
+  height:1.5rem;
+  width:auto;
+}
+
+@font-face {
+  font-family: carelia;
+  src: url("../fonturi/carelia-upright.ttf");
+}
+
+
+
+@media only screen and (max-width: 600px) {
+  .zonab h1{
+    margin-left:32vw;
+  
+  
+  
+  }
+}
+

@@ -1,0 +1,21 @@
+#galerie-statica{
+    padding-left:var(--padding-intern);
+    padding-right:var(--padding-intern);
+       border:1px solid black;
+  }
+  
+  #grid-galerie {
+   display:grid;
+   grid-template-columns: repeat(3,1fr);
+   grid-row-gap:0.5em;
+   grid-column-gap:0.5em;
+
+   
+  }
+  #grid-galerie img{
+    width: 100%;
+  }
+  #grid-galerie figcaption{
+    text-align:center;
+  }
+ 
