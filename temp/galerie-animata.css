@@ -1,0 +1,129 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  padding: 3rem;
+}
+
+.galerie {
+  width: 266.66px;
+  height: 266.66px;
+  border: 1px solid green;
+  position: relative;
+  overflow: hidden;
+}
+
+.galerie figcaption {
+  position: absolute;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.7);
+  width: 100%;
+  text-align: center;
+}
+
+.galerie figure {
+  position: relative;
+  width: 300px;
+  height: 300px;
+}
+
+#galerie2 .grid_2col {
+  display: grid;
+  width: 800px;
+  grid-template-columns: repeat(2, 400px);
+  grid-template-rows: repeat(2, 400px);
+  grid-row-gap: 0;
+  grid-column-gap: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation-name: gal2;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: 16s;
+  transform-origin: 0 0;
+}
+
+.galerie figcaption {
+  bottom: 0px;
+}
+
+@keyframes gal2 {
+  10% {
+    transform: scale(0.33);
+  }
+  15% {
+    transform: scale(1) translate(-400px);
+  }
+  20% {
+    transform: scale(0.33) translate(0);
+  }
+  25% {
+    transform: scale(1) translate(-800px);
+  }
+  30% {
+    transform: scale(0.33) translate(0);
+  }
+  35% {
+    transform: scale(1) translate(0px, -400px);
+  }
+  40% {
+    transform: scale(0.33) translate(0);
+  }
+  45% {
+    transform: scale(1) translate(-400px, -400px);
+  }
+  50% {
+    transform: scale(0.33) translate(0);
+  }
+  55% {
+    transform: scale(1) translate(-800px, -400px);
+  }
+  60% {
+    transform: scale(0.33) translate(0);
+  }
+  65% {
+    transform: scale(1) translate(0px, -800px);
+  }
+  70% {
+    transform: scale(0.33) translate(0);
+  }
+  75% {
+    transform: scale(1) translate(-400px, -800px);
+  }
+  80% {
+    transform: scale(0.33) translate(0);
+  }
+  85% {
+    transform: scale(1) translate(-800px, -800px);
+  }
+  90% {
+    transform: scale(0.33) translate(0);
+  }
+  100% {
+    transform: scale(0.33);
+  }
+}
+#galerie2 figure {
+  height: 400px;
+  width: 400px;
+  position: relative;
+  overflow: hidden;
+}
+
+#galerie2 img {
+  height: 100%;
+}
+
+@font-face {
+  font-family: carelia;
+  src: url("../fonturi/carelia-upright.ttf");
+}
+h1 {
+  font-family: carelia;
+}
+
+/*# sourceMappingURL=galerie-animata.css.map */

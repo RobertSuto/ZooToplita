@@ -19,3 +19,12 @@
     text-align:center;
   }
  
+
+ #grid-galerie figure:nth-child(5) {
+    opacity:0;
+  }
+  
+  #grid-galerie figure:nth-child(8) {
+    opacity:0;
+  
+  }
