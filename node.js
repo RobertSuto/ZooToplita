@@ -10,8 +10,6 @@ var i=0;
 
 
 
-var aux;
-aux=Math.floor(Math.random()*3+1)
 var width1;
 var widthp1;
 
@@ -25,15 +23,17 @@ vec[3]=16;
 
 
 app.get("*/galerie.css", function (req, res) {
-    aux=Math.floor(Math.random()*3+1)
+   
     if (aux==1){
         width1=266.66;
         widthp1=300;
     }
     else if(aux==2){width1=400;widthp1=400;}
     else if(aux==3){width1=533.33;widthp1=300}
+    
     res.setHeader("Content-Type", "text/css");
     let sirScss=fs.readFileSync("resurse/scss/galerie-animata.scss").toString("utf-8");
+    console.log(aux)
     let rezScss=ejs.render(sirScss,{nrrandom:vec[aux],rad:aux+1,wi:width1,wip:widthp1});
     
     
@@ -137,7 +137,8 @@ function verificaImagini(){
 
 
 
-function verificaImagini2(){
+function verificaImagini2(aux){
+
    
     var textFisier=fs.readFileSync("resurse/json/galerie.json") //citeste tot fisierul
     var jsi=JSON.parse(textFisier); //am transformat in obiect
@@ -242,8 +243,8 @@ app.get("/galeries", function(req,res){
 
 app.get("/galeria", function(req,res){
    
-    
-    let vectImagini=verificaImagini2();
+    aux=Math.floor(Math.random()*3+1)
+    let vectImagini=verificaImagini2(aux);
     res.render("pages/galeria",{imagini:vectImagini});
 
 

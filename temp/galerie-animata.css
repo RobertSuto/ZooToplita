@@ -8,8 +8,8 @@ body {
 }
 
 .galerie {
-  width: 266.66px;
-  height: 266.66px;
+  width: 533.33px;
+  height: 533.33px;
   border: 1px solid green;
   position: relative;
   overflow: hidden;
@@ -31,9 +31,9 @@ body {
 
 #galerie2 .grid_2col {
   display: grid;
-  width: 800px;
-  grid-template-columns: repeat(2, 400px);
-  grid-template-rows: repeat(2, 400px);
+  width: 1600px;
+  grid-template-columns: repeat(4, 400px);
+  grid-template-rows: repeat(4, 400px);
   grid-row-gap: 0;
   grid-column-gap: 0;
   position: absolute;
@@ -43,7 +43,7 @@ body {
   animation-direction: alternate;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
-  animation-duration: 16s;
+  animation-duration: 64s;
   transform-origin: 0 0;
 }
 
