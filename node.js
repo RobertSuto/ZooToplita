@@ -3,12 +3,11 @@ const fs = require('fs');
 const path=require('path');
 const {exec} = require("child_process");
 const ejs = require('ejs');
+const {Client} =require('pg');
 const sharp = require('sharp');
 const app= express(); //server
 var sass = require('sass');
 var i=0;
-
-
 
 var width1;
 var widthp1;
@@ -19,22 +18,26 @@ vec[1]=4;
 vec[2]=9;
 vec[3]=16;
 
+const client = new Client({
+    host: 'localhost',
+    user: 'postgres',
+    password: 'adminbobi',
+    database: 'proiect_tw',
+    port:5432
+})
+client.connect();
+
+
 
 
 
 app.get("*/galerie.css", function (req, res) {
    
-    if (aux==1){
-        width1=266.66;
-        widthp1=300;
-    }
-    else if(aux==2){width1=400;widthp1=400;}
-    else if(aux==3){width1=533.33;widthp1=300}
-    
+
     res.setHeader("Content-Type", "text/css");
     let sirScss=fs.readFileSync("resurse/scss/galerie-animata.scss").toString("utf-8");
-    console.log(aux)
-    let rezScss=ejs.render(sirScss,{nrrandom:vec[aux],rad:aux+1,wi:width1,wip:widthp1});
+
+    let rezScss=ejs.render(sirScss,{nrrandom:vec[aux],rad:aux+1,wi:width1,wip:widthp1,stil:vec[aux].toString()});
     
     
     
@@ -95,9 +98,9 @@ function verificaImagini(){
         let imMedie = path.join(caleGalerie+"/mediu/", numeFisier+"-350"+".webp");
         
         for (let dat of im.minute){
-            if(dat == 14){
+            if(dat == n){
                 
-                vectImagini.push({mare:imVeche, mic:imMica, mediu:imMedie,descriere:im.descriere});
+                vectImagini.push({mare:imVeche, mic:imMica, mediu:imMedie,descriere:im.descriere,cr:im.cr});
              counter++;
 
                 } 
@@ -190,7 +193,7 @@ function verificaImagini2(aux){
 
 
 
-app.get("/", function(req,res){
+app.get(["/","/index"], function(req,res){
     
     let vectImagini =verificaImagini();
     
@@ -203,15 +206,6 @@ app.get("/", function(req,res){
 })
 
 
-
-app.get("/index", function(req,res){
-    
-    let vectImagini =verificaImagini();
-    res.render("pages/index2",{imagini:vectImagini});
-   
-
-
-})
 
 
 app.get("/activitati", function(req,res){
@@ -263,6 +257,39 @@ app.get("/data", function(req,res){
 
 })
 
+app.get("/produse",function(req,res){
+    console.log(req.url);
+    console.log(req.query.tip_merch);
+    var conditie=req.query.tip_merch ? " where tip_merch='"+req.query.tip_merch + "'":""; 
+    
+    client.query(
+        "SELECT * from produse"+conditie,function(err,rez){
+     
+          
+            res.render("pages/produse",{produse:rez.rows})
+    
+        }
+    );
+    
+    
+});
+
+
+app.get("/produs/:id_produs",function(req,res){
+    client.query(
+        "SELECT * from produse where id="+req.params.id_produs,function(err,rez){
+            
+            
+            res.render("pages/produs",{produse:rez.rows[0]})
+    
+        });
+
+        
+    
+});
+
+
+
 
 app.get("/*",function(req, res) {
     console.log(req.url);
@@ -280,7 +307,6 @@ app.get("/*",function(req, res) {
     });
 
 
-    
 verificaImagini();
 
 

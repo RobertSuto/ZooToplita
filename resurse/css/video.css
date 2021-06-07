@@ -15,10 +15,12 @@
   }
 
   video::cue{
-    color: rgba(99, 27, 27, 0.445);
+    color: transparent;
 
     
-    background:linear-gradient(180deg, rgb(3, 94, 30), rgb(128, 128, 7));
-    background-clip: padding-box;
+    background:linear-gradient(180deg, rgb(8, 255, 82), rgb(44, 44, 2));
+    background-clip: text;
+    -webkit-background-clip: text;
+
     
   }

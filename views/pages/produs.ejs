@@ -1,0 +1,42 @@
+
+
+<%- include("../fragment/head") %>
+<%- include("../fragment/header") %>
+
+
+<div class="articole">
+
+    <a href="/produse">Go back</a>
+
+<article class="produs">
+    <h1 class="numeprodus"><span><%- locals.produse.nume %></span></h1>
+    <div class="flex-gap">
+  
+        
+    <table class="mnotabel">
+        <tr>
+        <td>Preț:</td><td> <span><%- locals.produse.pret %></span></td>
+        </tr>
+        <tr>
+          <td>  Mărime:</td> <td><span><%- locals.produse.dimensiune_marime %></span></td>
+        </tr>
+        <tr>
+            <td>Culoare:</td> <td><span><%- locals.produse.culoare %></span></td>
+        </tr>
+        <tr>
+           <td> Descriere:</td> <td><span><%- locals.produse.descriere %></span></td>
+        </tr>
+        <tr>
+        <td> Disponibil prin livrare:</td><td> <span><%- locals.produse.livrare_posta %></span></td>
+        </tr>
+        <tr>
+        <td> Data adaugare:</td><td> <span><time><%- locals.produse.data_adaugare %></time></span></td>
+        </tr>
+    </table>  
+    <img src="/resurse/imagini/produse/<%- locals.produse.imagine%>" alt="mno" /> 
+</div> 
+</article>
+</div>
+
+<%- include("../fragment/footer") %>
+

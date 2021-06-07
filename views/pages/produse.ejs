@@ -1,0 +1,162 @@
+<%- include("../fragment/head") %>
+<%- include("../fragment/header") %>
+<script>
+    console.log("aici");
+    window.onload=function(){
+       let btn= document.getElementById("filtreaza")
+       btn.onclick=function(){
+           let elemInput = document.getElementById("pret-minim");
+           let pretMax = elemInput.value;
+           let elemInput2 = document.getElementById("i_text");
+           let nume2 = elemInput2.value.toString();
+           let elemInput3 = document.getElementById("i_rad1");
+           let curier = elemInput3.checked.toString();
+           let elemInput4 = document.getElementById("i_sel_simplu");
+           let categorie = elemInput4.value.toLowerCase();
+           let optiuni=document.getElementById("i_sel_multiplu").options;		
+		   let sir="";
+		   for(let opt of optiuni){
+		        if(opt.selected)
+				sir+=opt.value+" ";
+		}
+           sir = sir.toLowerCase();
+           let elemInput6 = document.getElementById("i_check1");
+           let ramburss = elemInput6.checked.toString();
+           let elemInput7 = document.getElementById("i_textarea")
+           let textaree = elemInput7.value;
+        //    console.log(ramburss);
+        //    console.log(categorie);
+        //    console.log (curier);
+        //    console.log(nume2);
+        //    console.log(pretMax);
+           let produse = document.getElementsByClassName("produse");
+           for (let prod of produse){
+                prod.style.display = "none";               
+                let pret = parseInt(prod.getElementsByClassName("val-pret")[0].innerHTML)
+                var conditie1 = pret < pretMax;
+                let nume1 = prod.getElementsByClassName("numele")[0].innerHTML.toString();
+                var conditie2 = nume1.toLowerCase().includes(nume2);
+                let curier1 =  prod.getElementsByClassName("val-posta")[0].innerHTML.toString();
+                var conditie3 = (curier1 == curier);
+                let categor = prod.getElementsByClassName("val-tip")[0].innerHTML.toString();
+                var conditie4 = (categor == categorie);
+                let culor = prod.getElementsByClassName("val-culoare")[0].innerHTML.toString();
+                var conditie5 = sir.includes(culor);
+                let rambu =  prod.getElementsByClassName("val-ramburs")[0].innerHTML.toString();
+                var conditie6 = (rambu == ramburss)
+                let textareaa =  prod.getElementsByClassName("val-descriere")[0].innerHTML.toString();
+                var conditie7 = textareaa.includes(textaree)
+               
+                
+            
+            
+                
+                let conditieTotala = conditie1 && conditie2 && conditie3 && conditie4 && conditie5 && conditie6 && conditie7;
+                if (conditieTotala){
+                    prod.style.display="block";
+                }
+           }
+       }
+       btn = document.getElementById("reseteaza");
+       btn.onclick=function(){
+        let produse = document.getElementsByClassName("produse");
+           for (let prod of produse){
+                prod.style.display = "block";   }
+
+    }
+}
+
+
+</script>
+<div class='flex-gap'>
+  
+    <label> Text:
+		<input id="i_text" type="text" value="abc">
+	</label>
+    
+    <label> Pret: <input type="range" id="pret-minim" value="0" min="0"  max="70"></label>
+    <label>Ramburs :
+		<input id="i_check1" name="gr_ramburs" checked value="10" type="checkbox"/>
+	</label>
+    <div><!-- trebuie sa aiba acelasi name ca sa formeze un grup -->
+		<label>Online
+			<input id="i_rad1" checked name="gr_chck" value="fals" type="radio"/>
+		</label>
+		<label>Doar magazin:
+			<input id="i_rad2" name="gr_chck" value="true" type="radio"/>
+		</label>
+	</div>
+    <label>Select simplu:
+		<select id="i_sel_simplu">
+			<option value="haine" selected>Haine</option>
+			<option value="jucarii" >Jucarii</option>
+			<option value="diverse" >Diverse</option>
+		</select>
+	</label>
+
+
+
+
+
+    <button id="filtreaza">Filtreaza</button> 
+    <button id="reseteaza">Reseteaza</button>
+
+</div>
+<label>Select multiplu:
+    <select id="i_sel_multiplu" multiple size="4">
+        <option value="roz">roz</option>
+        <option value="galben" selected>galebn</option>
+     
+    </select>
+</label>
+<label>Textarea:
+    <textarea id="i_textarea">ceva in textarea</textarea>
+</label>
+
+<section class="articole">
+<% for(let prod of  locals.produse){ %>
+
+<article class="produse">
+    
+    <h1 class="numeproduse"><a href="/produs/<%- prod.id %>"><p ><span class="numele"><%- prod.nume %></span></a></p></h1>
+
+        <div class='flex-gap'>
+
+  
+        <table class="mnotabel">
+        <tr>
+        <td>Preț:</td><td> <span class="val-pret"><%- prod.pret %></span></td>
+        </tr>
+        <tr>
+          <td>  Mărime:</td> <td><span class="val-marime"><%- prod.dimensiune_marime %></span></td>
+        </tr>
+        <tr>
+            <td>Culoare:</td> <td><span class="val-culoare"><%- prod.culoare %></span></td>
+        </tr>
+     
+        <tr>
+        <td> Disponibil prin livrare:</td><td> <span class="val-posta"><%- prod.livrare_posta %></span></td>
+        </tr>
+        <tr style="display: none">
+        <td> Colecție:</td><td> <span class="val-tip"><%- prod.tip_merch %></span></td>
+        </tr>
+        <tr style="display: none">
+        <td> Colecție:</td><td> <span class="val-categ"><%- prod.tip_merch %></span></td>
+        </tr>
+     
+        <tr style="display: none">
+            <td> Ramburs</td><td> <span class="val-ramburs"><%- prod.retur %></span></td>
+        </tr>
+        <tr >
+            <td>Descriere </td><td> <span class="val-descriere"><%- prod.descriere %></span></td>
+        </tr>
+    </table>  
+    <img src="/resurse/imagini/produse/<%- prod.imagine%>" alt="mno" />
+</div>
+</article>
+
+</section>
+</div>
+
+<% } %>
+<%- include("../fragment/footer") %>
