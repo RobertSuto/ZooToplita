@@ -57,13 +57,74 @@
                 }
            }
        }
-       btn = document.getElementById("reseteaza");
-       btn.onclick=function(){
-        let produse = document.getElementsByClassName("produse");
-           for (let prod of produse){
-                prod.style.display = "block";   }
+       
 
+    
+    btn = document.getElementById("sortareNumeCresc");
+        btn.onclick=function(){
+            let produse = document.getElementsByClassName("produse");
+            let arrayProduse = Array.from(produse)
+            console.log(arrayProduse)
+            arrayProduse.sort(function(a1,a2){
+                let nume1 = a1.getElementsByClassName("numele")[0].innerHTML.toString();
+                let nume2 = a2.getElementsByClassName("numele")[0].innerHTML.toString();
+                return nume1.localeCompare(nume2);
+            })
+            for (let prodd of arrayProduse ){
+                prodd.parentNode.appendChild(prodd);
+            }
+
+
+
+
+        }
+        btn = document.getElementById("sortareNumeDescresc");
+        btn.onclick=function(){
+            let produse = document.getElementsByClassName("produse");
+            let arrayProduse = Array.from(produse)
+            console.log(arrayProduse)
+            arrayProduse.sort(function(a1,a2){
+                let nume1 = a1.getElementsByClassName("numele")[0].innerHTML.toString();
+                let nume2 = a2.getElementsByClassName("numele")[0].innerHTML.toString();
+                return nume2.localeCompare(nume1);
+            })
+            for (let prodd of arrayProduse ){
+                prodd.parentNode.appendChild(prodd);
+            }
+
+
+        }
+
+    btn=document.getElementById("reseteaza");
+    btn.onclick=function(){
+        
+        var produse=document.getElementsByClassName("produse");
+    
+        for (let prod of produse){
+            prod.style.display="block";
+        }
     }
+    window.onkeydown=function(e){
+        
+       
+        if (e.key=="c" && e.altKey){
+            e.preventDefault();
+            var produse=document.getElementsByClassName("produse");
+            sumaArt=0;
+            for (let prod of produse){
+                sumaArt+=parseInt(prod.getElementsByClassName("val-pret")[0].innerHTML);
+            }
+            let infoSuma=document.createElement("p");//<p></p>
+            infoSuma.innerHTML="Suma: "+sumaArt;//<p>...</p>
+            infoSuma.className="info-produse";
+            let p=document.getElementById("p-suma")
+            p.parentNode.insertBefore(infoSuma,p.nextSibling);
+            setTimeout(function(){infoSuma.remove()}, 2000);
+        }
+    }
+
+
+
 }
 
 
@@ -71,7 +132,7 @@
 <div class='flex-gap'>
   
     <label> Text:
-		<input id="i_text" type="text" value="abc">
+		<input id="i_text" type="text" value="">
 	</label>
     
     <label> Pret: <input type="range" id="pret-minim" value="0" min="0"  max="70"></label>
@@ -88,9 +149,11 @@
 	</div>
     <label>Select simplu:
 		<select id="i_sel_simplu">
-			<option value="haine" selected>Haine</option>
-			<option value="jucarii" >Jucarii</option>
-			<option value="diverse" >Diverse</option>
+          
+            <% for(let tipuu of locals.tipuri){ %>
+			<option value="<%- tipuu.tip %>" selected><%- tipuu.tip %></option>
+		
+            <% } %>
 		</select>
 	</label>
 
@@ -100,6 +163,8 @@
 
     <button id="filtreaza">Filtreaza</button> 
     <button id="reseteaza">Reseteaza</button>
+    <button id="sortareNumeCresc">Sorteaza Crescator</button>
+    <button id="sortareNumeDescresc">Sorteaza Descrescator</button>
 
 </div>
 <label>Select multiplu:
@@ -110,7 +175,7 @@
     </select>
 </label>
 <label>Textarea:
-    <textarea id="i_textarea">ceva in textarea</textarea>
+    <textarea id="i_textarea"></textarea>
 </label>
 
 <section class="articole">
@@ -159,4 +224,5 @@
 </div>
 
 <% } %>
+<p id="p-suma">Apasați Alt+"c" pentru suma preturilor produselor afișate. </p>
 <%- include("../fragment/footer") %>

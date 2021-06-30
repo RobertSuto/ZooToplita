@@ -1,0 +1,67 @@
+<%- include("../fragment/head") %>
+<%- include("../fragment/header") %>
+
+<script type="text/javascript" src="resurse/js/inregistrare.js"></script>
+    <main>
+    <div class="afisaj">
+        <h1>Inregistrare utilizator</h1>
+        
+		<% if (locals.err !="") { %>
+		<form id="form_inreg"  method="post" class="date"  action="/inreg" id="inregistrare" enctype="multipart/form-data">
+			<p>
+				<label>
+					Username: <input type="text" name="username"  value="prof<%= Math.floor(Math.random()*100000) %>" required pattern="[A-Za-z0-9]+">
+				</label>
+			</p>
+			<p>
+				<label>
+					Nume: <input type="text" name="nume" value="Gogulescu" required pattern="[A-Za-z]+">
+				</label>
+			</p>
+			<p>
+				<label>
+					Prenume: <input type="text" name="prenume" value="Gogu" required pattern="[A-Za-z]+">
+				</label>
+			</p>
+			<p>
+				<label>
+					Parola: <input id="parl" type="password" name="parola" value="" pattern="(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9][a-zA-Z]*[0-9]).{0,}">
+				</label>
+			</p>
+			<p>
+				<label>
+					Reintroduceti parola: <input id="rparl" type="password" name="rparola" value="">
+				</label>
+			</p>
+			<p>
+				<label>
+					Email: <input type="text" name="email" value="profprofprof007@gmail.com"  size="50">
+				</label>
+			</p>
+			<p>
+				<label>
+					Culoare text chat: <select name="culoare_chat"><option value="red">rosu</option><option value="green">verde</option><option value="blue">albastru</option></select>
+				</label>
+			</p>
+			<p>
+				<label>
+					Poza: <input type="file" name="poza">
+				</label>			
+			</p>
+			<p>		
+				<input type="submit" value="Trimite">
+				<input type="reset" value="Reseteaza">
+			</p>
+		</form>
+	<% } %>
+	<% if(locals.raspuns) { %>
+	<%- locals.raspuns+"<br/>"%>
+	<% } %>
+	<% if(locals.err) { %>
+	<%- locals.err %>
+	<% } %>
+    </div>
+</main>
+
+
+<%- include("../fragment/footer") %>

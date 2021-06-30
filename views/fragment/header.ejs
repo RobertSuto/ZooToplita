@@ -32,5 +32,16 @@
             </ul>
         </li>
         <li><a href="#">Contact</a></li>
+        <% if (locals.utilizator){ %>
+        <li><a href="#"><%- locals.utilizator.username %></a></li>
+        <li><a href="/logout">Logout</a></li>
+        <% } %>
+
+        <% if (locals.utilizator && locals.utilizator.admin==true ){ %>
+            
+            <li><a href="/useri">Utilizatori</a></li>
+            <% } %>
     </ul>
+    
+    <button id="schimbare-tema"><span class="fas fa-sun"></span>vs<span class="fas fa-moon"></span></button>
 </nav>

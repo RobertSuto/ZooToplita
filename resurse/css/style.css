@@ -14,6 +14,8 @@
 @import "produs.css";
 
 
+
+
 body {
 
     margin: 0%;
@@ -31,6 +33,37 @@ body {
     background: var(--rosu);
     
 }
+
+
+.dark{
+  --verde: #244e25;
+    --rosu: #5c0529;
+    --galbenfrum: #727029;
+    --verdelime: #0f5026;
+    --unt: #706833;
+    --galbenverzui: #677732;
+    --goldfizz: #585c12;
+    --creamcan: #5e4b25;
+    --goldennord: #99843d;
+    --negru: #ffffff;
+  color: #d8d8cf;
+}
+
+#schimbare-tema{
+    background-color: var(--rosu);
+    color: var(  --negru);
+    border:1px solid black;
+    height:20px;
+}
+#schimbare-tema:hover{
+    cursor:pointer;
+    background-color: var(--galbenfrum);
+    color: var( --goldfizz);
+}
+#schimbare-tema:focus{
+    outline:0px;
+}
+
 
 header {
     background-image: url("../Imagini/backgroundh.jpg");

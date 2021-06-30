@@ -7,7 +7,21 @@
     
  <%- include("../fragment/header") %>
   <p id="watermark"></p>  
-   
+  <% if (!locals.utilizator) { %>
+			
+    <p>Va rugam sa va logati: <br/>
+    <form id="login" method="post" action="/login">
+        
+        <label>
+            Username: <input type="text" name="username" value="Costica">
+        </label>
+        <label>
+            Parola: <input type="password" name="parola" value="">
+        </label>
+        
+        <input type="submit" value="Login">
+    </form>
+    <% } %>
     <main>
         <div class="container">
             <div class="zona1">

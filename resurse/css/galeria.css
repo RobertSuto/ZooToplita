@@ -14,7 +14,7 @@
     .galerie{
       width:400px;
       height:400px;
-      border:1px solid black;
+      border:1px solid rgba(255,255,255,1);
       position:relative;
      overflow:hidden;
   
